@@ -46,7 +46,7 @@ Some example of running the container:
 docker run \
     --name jax-cuda-test \
     --rm \
-    -it \
+    -dit \
     -u $(id -u):$(id -g) \
     -v $(pwd):$(pwd):rw \
     jax-cuda:latest
