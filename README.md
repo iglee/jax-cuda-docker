@@ -47,6 +47,7 @@ docker run \
     --name jax-cuda-test \
     --rm \
     -dit \
+    --network=bridge \
     -u $(id -u):$(id -g) \
     -v $(pwd):$(pwd):rw \
     jax-cuda:latest
