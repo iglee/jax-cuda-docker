@@ -1,4 +1,4 @@
-ARG CUDA="11.4.3"
+ARG CUDA="11.2.4"
 ARG CUDNN="8"
 ARG TAG="devel"
 ARG OS="ubuntu20.04"
@@ -33,8 +33,21 @@ RUN useradd \
 ARG WORKDIR_PATH
 WORKDIR ${WORKDIR_PATH}
 
-ARG JAX_CUDA_CUDNN="cuda"
+# Copy the environment YAML file into the container
+COPY environment.yaml .
 
+# Create the conda environment
+RUN conda env create -f environment.yaml
+
+# Activate the environment (you can use this command later in the container)
+SHELL ["conda", "run", "-n", "eicl_venv", "/bin/bash", "-c"]
+
+
+
+
+ARG JAX_CUDA_CUDNN="cuda"
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install "jax[$JAX_CUDA_CUDNN]" \
         -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
+
+CMD ["conda", "run", "-n", "eicl_venv", "/bin/bash"]
