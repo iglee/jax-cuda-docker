@@ -1,4 +1,4 @@
-ARG CUDA="11.2.4"
+ARG CUDA="11.1.0"
 ARG CUDNN="8"
 ARG TAG="devel"
 ARG OS="ubuntu20.04"
