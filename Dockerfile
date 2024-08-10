@@ -1,4 +1,4 @@
-ARG CUDA="11.1.0"
+ARG CUDA="11.7.1"
 ARG CUDNN="8"
 ARG TAG="devel"
 ARG OS="ubuntu20.04"
@@ -11,6 +11,7 @@ RUN apt-get update && \
         htop \
         python3 \
         wget \
+        tmux \
         python3-pip && \
     rm -rf /var/lib/apt/lists/*
 ENV CONDA_DIR /opt/conda
