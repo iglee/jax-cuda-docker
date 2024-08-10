@@ -14,7 +14,7 @@ RUN apt-get update && \
         tmux \
         python3-pip && \
     rm -rf /var/lib/apt/lists/*
-ENV CONDA_DIR /opt/conda
+ENV CONDA_DIR=/opt/conda
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda
 
